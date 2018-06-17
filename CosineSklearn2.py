@@ -1,8 +1,20 @@
-d1 = "It's easy I'm afraid"
-d2 = "Can’t you speak? (Usually said to embarrass the other person). I just saw you kissing my boyfriend. What’s the matter? Cat got your tongue?"
-d3 = "Not as easy as it appears to be. You want me to come to work at 6:00 AM? Easier said than done!"
-d4 = "You can find good in every bad situation. Even though you just got fired, remember that every cloud has a silver lining – at least you don’t have to work for that grouchy boss anymore!"
-documents = [d1, d2, d3, d4]
+####Adding Corpera
+
+from nltk.corpus import CategorizedPlaintextCorpusReader
+
+
+d1 = "I feel very nervous"
+
+documents = [d1]
+
+reader = CategorizedPlaintextCorpusReader(r'\Users\JoeDi\Desktop\MSC\Idioms Corpera', r'.*\.txt', cat_pattern=r'(\w+)/*')
+
+
+for w in reader.fileids():
+    wd = reader.raw(w)
+    documents.append(w + " " + wd)
+
+#print(documents)
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
