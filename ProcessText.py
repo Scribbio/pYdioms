@@ -4,35 +4,32 @@ from nltk.corpus import gutenberg
 import nltk
 #refactor all these import staments!
 
-
-
 class ProcessText:
 
     def __init__(self):
         return
 
-    def process(self, txt):
+    def process(txt):
+
+
         #preserves smilies
         tTokenizer = TweetTokenizer()
         tokenised = tTokenizer.tokenize(txt)
 
-        print('Tokenised: ', tokenised)
+        #print('Tokenised: ', tokenised)
 
         #Remove punctuation
         noPunct = [e for e in tokenised if len(e) >= 3]
-
-
 
         # Remove stopwords
         stopwords = nltk.corpus.stopwords.words('english')
         words = [w for w in noPunct if w.lower() not in stopwords]
         print('Stopwords: ', words)
 
-
         #Lemmatise
+        #removes prefixes: dis-, in-, re-, and suffixes: -ed, -ing, -ly, and -es
         lemmatizer = WordNetLemmatizer()
         lemmas = [lemmatizer.lemmatize(t) for t in words]
         print('Lemmatised: ', lemmas)
-
 
         return lemmas

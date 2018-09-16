@@ -2,12 +2,11 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import numpy as np
 import nltk
+import re, math
+from collections import Counter
 
 textOne = "Hello my name is Joe, Hello my name is Joe, Hello my name is Joe"
 textTwo = "Joe's my name! Joe's my name! Joe's my name! Joe's my name! Joe's my name!"
-
-import re, math
-from collections import Counter
 
 WORD = re.compile(r'\w+')
 
@@ -28,7 +27,7 @@ def text_to_vector(text):
      words = WORD.findall(text)
      return Counter(words)
 
-text1 = 'Its easy!'
+text1 = 'Weve all heard this one. Oh, dont worry. Thats a piece of cake! We know this signifies something that is easy, managed with no difficulties. We can do it with '
 text2 = 'Weve all heard this one. Oh, dont worry. Thats a piece of cake! We know this signifies something that is easy, managed with no difficulties. We can do it with our eyes closed. '
 
 vector1 = text_to_vector(text1)
